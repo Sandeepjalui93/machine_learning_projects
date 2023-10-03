@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore")
 
 # Function to load the drug_dataset from a CSV file
 def load_dataset():
-    dataset = pd.read_csv('https://github.com/Sandeepjalui93/machine_learning_projects/tree/main/patient_centric_drug_prediction/drug_dataset.csv')
+    dataset = pd.read_csv('Dataset/drug_dataset.csv')
     return dataset
 
 # Function to get the shape (number of rows and columns) of the loaded dataset
