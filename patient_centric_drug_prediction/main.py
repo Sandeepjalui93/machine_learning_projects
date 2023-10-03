@@ -470,7 +470,7 @@ def run_streamlit_app():
         cholesterol = st.sidebar.selectbox('Cholesterol', ('NORMAL', 'HIGH'))
         age = st.sidebar.selectbox('AgeGroup', ('0-30', '30-40', '40-50', '50-60', '60+'))
         na_to_k = st.sidebar.selectbox('Na_to_K_groups', ('5-10', '10-15', '15-20', '20-25', '25-30', '30+'))
-        # Convert the user inputs into a DataFrame with a single row
+        
         data = {
             'Sex': [sex],
             'BP': [bp],
@@ -480,15 +480,14 @@ def run_streamlit_app():
         }
     
         df = pd.DataFrame(data)
-        print(df)
         return df
 
     user_input = get_user_input()
 
     categorical_columns = ['Sex','BP','Cholesterol','AgeGroup','Na_to_K_groups']  
 
-    X_train, X_validation, Y_train, Y_validation, encoder = get_dummies_smote_sampling()
-    transformed_input = encoder.transform(user_input[categorical_columns])  # Modify this line with the correct transformations
+    encoder = OneHotEncoder()
+    transformed_input = encoder.fit_transform(user_input[categorical_columns])  
     dense_array = transformed_input.toarray()
     data = dense_array.tolist()
 
@@ -519,25 +518,25 @@ def run_streamlit_app():
     st.write("### Count of Each Na_to_K Group")
     st.image('plotting_Na_to_K_groups.png')
 
+'''
+accuracy, precision, recall, f1, model_log = fit_logistic_regression()
+print('Accuracy_log:',accuracy,'Precision_log:',precision,'Recall_log:',recall,'F1_log:',f1)
 
-#accuracy, precision, recall, f1, model_log = fit_logistic_regression()
-#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+accuracy, precision, recall, f1 = fit_gaussiannb()
+print('Accuracy_gnb:',accuracy,'Precision_gnb:',precision,'Recall_gnb:',recall,'F1_gnb:',f1)
 
-#accuracy, precision, recall, f1 = fit_gaussiannb()
-#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+accuracy, precision, recall, f1 = fit_decision_tree()
+print('Accuracy_dt:',accuracy,'Precision_dt:',precision,'Recall_dt:',recall,'F1_dt:',f1)
 
-#accuracy, precision, recall, f1 = fit_decision_tree()
-#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+accuracy, precision, recall, f1, model_rf = fit_rf()
+print('Accuracy_rf:',accuracy,'Precision_rf:',precision,'Recall_rf:',recall,'F1_rf:',f1)
 
-#accuracy, precision, recall, f1, model_rf = fit_rf()
-#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+with open("model_rf.pkl", "wb") as file:
+    pickle.dump(model_rf, file)
 
-
-#with open("model_rf.pkl", "wb") as file:
-#    pickle.dump(model_rf, file)
-
-#with open("model_log.pkl", "wb") as file:
-#    pickle.dump(model_log, file)
+with open("model_log.pkl", "wb") as file:
+    pickle.dump(model_log, file)
+'''
 
 if __name__ == "__main__":
     run_streamlit_app()
