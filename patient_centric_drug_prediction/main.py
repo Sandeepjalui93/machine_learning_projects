@@ -519,19 +519,19 @@ def run_streamlit_app():
     st.write("### Count of Each Na_to_K Group")
     st.image('plotting_Na_to_K_groups.png')
 
-```
-accuracy, precision, recall, f1, model_log = fit_logistic_regression()
-print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
 
-accuracy, precision, recall, f1 = fit_gaussiannb()
-print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+#accuracy, precision, recall, f1, model_log = fit_logistic_regression()
+#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
 
-accuracy, precision, recall, f1 = fit_decision_tree()
-print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+#accuracy, precision, recall, f1 = fit_gaussiannb()
+#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
 
-accuracy, precision, recall, f1, model_rf = fit_rf()
-print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
-```
+#accuracy, precision, recall, f1 = fit_decision_tree()
+#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+
+#accuracy, precision, recall, f1, model_rf = fit_rf()
+#print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
+
 
 with open("model_rf.pkl", "wb") as file:
     pickle.dump(model_rf, file)
