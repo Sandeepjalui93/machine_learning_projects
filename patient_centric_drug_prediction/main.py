@@ -533,11 +533,11 @@ def run_streamlit_app():
 #print('Accuracy:',accuracy,'Precision:',precision,'Recall:',recall,'F1:',f1)
 
 
-with open("model_rf.pkl", "wb") as file:
-    pickle.dump(model_rf, file)
+#with open("model_rf.pkl", "wb") as file:
+#    pickle.dump(model_rf, file)
 
-with open("model_log.pkl", "wb") as file:
-    pickle.dump(model_log, file)
+#with open("model_log.pkl", "wb") as file:
+#    pickle.dump(model_log, file)
 
 if __name__ == "__main__":
     run_streamlit_app()
